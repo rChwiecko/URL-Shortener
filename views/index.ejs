@@ -6,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-   
+    <div class="container">
+        <h1>URL Shrinker</h1>
+        <form action="/shortUrls" method="POST" class="my-4 from-inline">
+            <label for="fullURL" class="sr-only">URL</label>
+            <input type="url" required name="fullURL" placeholder="URL" id="fullURL" class="form-control mr-2 col">
+            <button type="submit" class="btn btn-success">Shrink</button>
+        </form>
+
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.forEach(shortUrl  => { %>
+                    <tr>
+                        <td><a href="<% shortUrl.full %>"><% shortUrl.full %></a></td>
+                        <td><a href="<% shortUrl.short %>"><% shortUrl.short %></a></td>
+                        <td><% shortUrl.clicks %></td>
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
